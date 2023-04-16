@@ -50,8 +50,8 @@ public class NBody{
         StdOut.printf("%.2e\n",radius);
         for (int k = 0; k < len; k++){
             StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
-            planets[i].xxPos, planets[i].yyPos, planets[i].xxVel,
-            planets[i].yyVel, planets[i].mass, planets[i].imgFileName); 
+            planets[k].xxPos, planets[k].yyPos, planets[k].xxVel,
+            planets[k].yyVel, planets[k].mass, planets[k].imgFileName); 
         }
     }
 }
