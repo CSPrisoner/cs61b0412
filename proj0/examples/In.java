@@ -374,7 +374,8 @@ public final class In {
      * Reads all ints from a file 
      * @deprecated Clearer to use 
      * <tt>new In(filename)</tt>.{@link #readAllInts()}
-     */
+     */r
+    @depecated
     public static int[] readInts(String filename) {
         return new In(filename).readAllInts();
     }
@@ -384,6 +385,7 @@ public final class In {
      * @deprecated Clearer to use 
      * <tt>new In(filename)</tt>.{@link #readAllDoubles()}
      */
+    @depecated
     public static double[] readDoubles(String filename) {
         return new In(filename).readAllDoubles();
     }
