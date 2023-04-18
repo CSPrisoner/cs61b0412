@@ -1,4 +1,5 @@
 public class LinkedListDeque<T> {
+
     private class LNode{
         T item;
         LNode pre, next;
@@ -54,24 +55,24 @@ public class LinkedListDeque<T> {
     public T removeFirst(){
         /*Removes and returns the item at the front of the deque.
         If no such item exists, returns null.*/
-        size -= 1;
         if (isEmpty())
             return null;
         T res = sentinel.next.item;
         sentinel.next.next.pre = sentinel;
         sentinel.next = sentinel.next.next;
+        size -= 1;
         return res;
     }
 
     public T removeLast(){
         /*Removes and returns the item at the back of the deque.
         If no such item exists, returns null.*/
-        size -= 1;
         if (isEmpty())
             return null;
         T res = sentinel.pre.item;
         sentinel.pre = sentinel.pre.pre;
-        sentinel.pre.next = sentinel;
+        sentinel.pre.pre.next = sentinel;
+        size -= 1;
         return res;
     }
 

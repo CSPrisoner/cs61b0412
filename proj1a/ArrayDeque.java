@@ -1,12 +1,12 @@
-public class ArrayDeque<Item> {
-    private Item[] items;
+public class ArrayDeque<T> {
+    private T[] items;
     private int size;
     private int capacity;
     private int nextFirst;
     private int nextLast;
 
     private void resize(int capacity){
-        Item[] a = (Item[]) new Object[capacity];
+        T[] a = (T[]) new Object[capacity];
         for (int i = 1; i <= size; i++){
             a[i] = items[(++nextFirst) % this.capacity];
         }
@@ -16,7 +16,7 @@ public class ArrayDeque<Item> {
         nextFirst = 0;
     }
 
-    public void addFirst(Item item){
+    public void addFirst(T item){
         if (size == capacity)
             resize(capacity * 2);
         items[nextFirst] = item;
@@ -24,7 +24,7 @@ public class ArrayDeque<Item> {
         size += 1;
     }
 
-    public void addLast(Item item){
+    public void addLast(T item){
         if (size == capacity)
             resize(capacity * 2);
         items[nextLast] = item;
@@ -32,11 +32,11 @@ public class ArrayDeque<Item> {
         size += 1;
     }
 
-    public Item removeFirst(){
+    public T removeFirst(){
         if (size == 0)
             return null;
         nextFirst = (nextFirst + 1) % capacity;
-        Item x = items[nextFirst];
+        T x = items[nextFirst];
         items[nextFirst] = null;
         size -= 1;
         if (capacity >= 16 && size < capacity / 4)
@@ -44,11 +44,11 @@ public class ArrayDeque<Item> {
         return x;
     }
 
-    public Item removeLast(){
+    public T removeLast(){
         if (size == 0)
             return null;
         nextLast = (capacity + nextLast - 1) % capacity;
-        Item x = items[nextLast];
+        T x = items[nextLast];
         items[nextLast] = null;
         size -= 1;
         if (capacity >= 16 && size < capacity / 4)
@@ -57,7 +57,7 @@ public class ArrayDeque<Item> {
     }
 
 
-    public Item get(int index){
+    public T get(int index){
         if (index < 0 || index >= size)
             return null;
         else
@@ -86,7 +86,7 @@ public class ArrayDeque<Item> {
     }
 
     public ArrayDeque(){
-        items = (Item[]) new Object[8];
+        items = (T[]) new Object[8];
         this.capacity = items.length;
         nextFirst = capacity - 1;
         nextLast = 0;
