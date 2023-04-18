@@ -70,8 +70,8 @@ public class LinkedListDeque<T> {
         if (isEmpty())
             return null;
         T res = sentinel.pre.item;
-        sentinel.pre = sentinel.pre.pre;
         sentinel.pre.pre.next = sentinel;
+        sentinel.pre = sentinel.pre.pre;
         size -= 1;
         return res;
     }
