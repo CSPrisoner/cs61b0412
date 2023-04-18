@@ -1,5 +1,5 @@
 public class LinkedListDeque<T> {
-    public class LNode{
+    private class LNode{
         T item;
         LNode pre, next;
         public LNode(T i, LNode p, LNode n){
@@ -30,10 +30,7 @@ public class LinkedListDeque<T> {
 
     public boolean isEmpty(){
         /*Returns true if deque is empty, false otherwise.*/
-        if (sentinel.next == sentinel)
-            return true;
-        else
-            return false;
+        return size == 0;
     }
 
     public int size(){
@@ -52,7 +49,6 @@ public class LinkedListDeque<T> {
             System.out.print(" " + p.item);
             p = p.next;
         }
-        System.out.println();
     }
 
     public T removeFirst(){
@@ -62,11 +58,6 @@ public class LinkedListDeque<T> {
         if (isEmpty())
             return null;
         T res = sentinel.next.item;
-        if (sentinel.next.next == sentinel){
-            sentinel.next = sentinel;
-            sentinel.pre = sentinel;
-            return res;
-        }
         sentinel.next.next.pre = sentinel;
         sentinel.next = sentinel.next.next;
         return res;
@@ -79,11 +70,6 @@ public class LinkedListDeque<T> {
         if (isEmpty())
             return null;
         T res = sentinel.pre.item;
-        if (sentinel.next.next == sentinel){
-            sentinel.next = sentinel;
-            sentinel.pre = sentinel;
-            return res;
-        }
         sentinel.pre = sentinel.pre.pre;
         sentinel.pre.next = sentinel;
         return res;
@@ -111,7 +97,7 @@ public class LinkedListDeque<T> {
             return help_getRecursive(index, sentinel.next);
     }
 
-    public  T help_getRecursive(int index, LNode p){
+    private T help_getRecursive(int index, LNode p){
         if (index == 0)
             return p.item;
         else
@@ -124,16 +110,4 @@ public class LinkedListDeque<T> {
         sentinel.next = sentinel;
         size = 0;
     }
-
-    public LinkedListDeque(LinkedListDeque other){
-        /*Creates a deep copy of other*/
-        sentinel = new LNode(null, null, null);
-        sentinel.pre = sentinel;
-        sentinel.next = sentinel;
-        size = 0;
-        for (int i = 0; i < other.size(); i += 1){
-            addLast((T)other.get(i));
-        }
-    }
-
 }
