@@ -1,3 +1,4 @@
+//have some remaining problems.
 public class ArrayDeque<T> {
     private T[] items;
     private int size;
@@ -20,7 +21,7 @@ public class ArrayDeque<T> {
         if (size == capacity)
             resize(capacity * 2);
         items[nextFirst] = item;
-        nextLast = (capacity + nextFirst - 1) % capacity;
+        nextFirst = (capacity + nextFirst - 1) % capacity;
         size += 1;
     }
 
@@ -30,6 +31,27 @@ public class ArrayDeque<T> {
         items[nextLast] = item;
         nextLast = (nextLast + 1) % capacity;
         size += 1;
+    }
+
+    public int size(){
+        return size;
+    }
+
+    public boolean isEmpty(){
+        return size == 0;
+    }
+
+    public void printDeque(){
+        if (size == 0)
+            return;
+        int start = (nextFirst + 1) % capacity;
+        System.out.print(items[start]);
+        start = (start + 1) % capacity;
+        int end = (nextLast - 1 + capacity) % capacity;
+        while (start != end){
+            System.out.print(" " + items[start]);
+            start = (start + 1) % capacity;
+        }
     }
 
     public T removeFirst(){
@@ -62,27 +84,6 @@ public class ArrayDeque<T> {
             return null;
         else
             return items[(nextFirst + 1 + index) % capacity];
-    }
-
-    public int size(){
-        return size;
-    }
-
-    public boolean isEmpty(){
-        return size == 0;
-    }
-
-    public void printDeque(){
-        if (size == 0)
-            return;
-        int start = (nextFirst + 1) % capacity;
-        System.out.print(items[start]);
-        start = (start + 1) % capacity;
-        int end = (nextLast - 1 + capacity) % capacity;
-        while (start != end){
-            System.out.print(" " + items[start]);
-            start = (start + 1) % capacity;
-        }
     }
 
     public ArrayDeque(){
