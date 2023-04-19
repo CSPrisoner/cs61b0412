@@ -19,16 +19,6 @@ public class Palindrome {
         return true;
     }
 
-    public  boolean isPalindrome(Deque<Character> L){
-        if (L == null)
-            return true;
-        int len = L.size();
-        for (int i = 0, j = len - 1; i < j; i++, j--)
-            if (L.get(i) != L.get(j))
-                return false;
-        return true;
-    }
-
     public boolean isPalindrome(String word, CharacterComparator cc){
         if (word == null)
             return true;

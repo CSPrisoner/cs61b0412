@@ -24,21 +24,6 @@ public class TestPalindrome {
     }
 
     @Test
-    public void testIsPalindrome_2(){
-        Deque<Character> L1= new LinkedListDeque<>();
-        L1.addLast('a');
-        L1.addLast('b');
-        L1.addLast('a');
-        assertTrue(palindrome.isPalindrome(L1));
-
-        Deque<Character> L2= new LinkedListDeque<>();
-        L2.addLast('a');
-        L2.addLast('b');
-        assertFalse(palindrome.isPalindrome(L2));
-
-    }
-
-    @Test
     public void testisPalindromecc() {
         OffByOne obo = new OffByOne();
         assertTrue(palindrome.isPalindrome("", obo));
